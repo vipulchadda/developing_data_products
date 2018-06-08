@@ -1,0 +1,53 @@
+Developing Data Products Peer Assignment
+========================================================
+author: Vipul Chadda
+date: 9th June 2018
+autosize: true
+
+Predicting Iris species based on sepal and petal size.
+========================================================
+
+This app predicts the species of iris based on sizes of 2 properties, Sepal size and Petal size. The prediction is done using the random forest method using the length and width of the respective property.
+
+Overview
+========================================================
+
+The data used is from the iris dataset provided in R. The length and width property is plotted against each other separating the species in different colours.
+The user inputs the length and width of a particular property using the sliders and this value is plotted above the data points plot with the colour of the predicted species using random forest method.
+
+Sepal size prediction
+========================================================
+
+
+
+```r
+fit <- train(Species ~ Sepal.Length + Sepal.Width, method="rf", data=iris)
+```
+
+```r
+newdf = data.frame(Sepal.Length = c(6), Sepal.Width = c(3.2)) # Using sample input values
+predict(fit, newdata = newdf)
+```
+
+```
+[1] versicolor
+Levels: setosa versicolor virginica
+```
+
+Petal size prediction
+========================================================
+
+
+```r
+fit <- train(Species ~ Petal.Length + Petal.Width, method="rf", data=iris)
+```
+
+```r
+newdf = data.frame(Petal.Length = c(4), Petal.Width = c(1.6)) # Using sample input values
+predict(fit, newdata = newdf)
+```
+
+```
+[1] versicolor
+Levels: setosa versicolor virginica
+```
